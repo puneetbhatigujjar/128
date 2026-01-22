@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login/Register | TRIPPLE HOST</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+<header>
+  <h1>TRIPPLE HOST</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="plans.html">Plans</a>
+    <a href="login.html">Login/Register</a>
+  </nav>
+</header>
+
+<main>
+  <section class="auth">
+    <h2>Login / Register</h2>
+    <button id="login-btn" class="btn">Login/Register</button>
+  </section>
+</main>
+
+<script>
+const identity = netlifyIdentity.init();
+document.getElementById('login-btn').addEventListener('click', () => {
+  identity.open();
+});
+
+identity.on('login', user => {
+  window.location.href = 'dashboard.html';
+});
+</script>
+
+<footer>
+  <p>&copy; 2026 TRIPPLE HOST | <a href="terms.html">Terms & No Refund Policy</a></p>
+</footer>
+</body>
+</html>
