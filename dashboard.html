@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | TRIPPLE HOST</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+<header>
+  <h1>TRIPPLE HOST Dashboard</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="plans.html">Plans</a>
+    <a href="tickets.html">Tickets</a>
+    <a href="#" id="logout-btn">Logout</a>
+  </nav>
+</header>
+
+<main>
+  <section class="dashboard">
+    <h2>Welcome, <span id="user-email"></span></h2>
+    <div class="servers">
+      <h3>Your Purchased Servers</h3>
+      <p>No servers yet. Buy a plan to get started.</p>
+    </div>
+    <div class="tickets">
+      <h3>Your Tickets</h3>
+      <p>No tickets yet. <a href="tickets.html">Create one</a></p>
+    </div>
+  </section>
+</main>
+
+<script>
+const identity = netlifyIdentity.init();
+identity.on('init', user => {
+  if (!user) window.location.href = 'login.html';
+  document.getElementById('user-email').innerText = user.email;
+});
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  identity.logout();
+  window.location.href = 'login.html';
+});
+</script>
+
+<footer>
+  <p>&copy; 2026 TRIPPLE HOST | <a href="terms.html">Terms & No Refund Policy</a></p>
+</footer>
+</body>
+</html>
